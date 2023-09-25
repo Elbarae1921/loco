@@ -2,6 +2,10 @@
   "name": "loco",
   "displayName": "LoCo",
   "description": "Show the number of lines of codes changed",
+  "icon": "images/loco.png",
+  "repository": {
+    "url": "https://github.com/elbarae1921/loco"
+  },
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
