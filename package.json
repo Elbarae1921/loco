@@ -2,6 +2,7 @@
   "name": "loco",
   "displayName": "LoCo",
   "description": "Show the number of lines of codes changed",
+  "publisher": "elbarae1921",
   "icon": "images/loco.png",
   "repository": {
     "url": "https://github.com/elbarae1921/loco"
