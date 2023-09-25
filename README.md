@@ -4,7 +4,7 @@ LoCo is a vscode extension
 ## Features
 
 This extension shows the number of changed lines of code compared to the main branch on the editor's status bar:
-[Example of the extension](https://cdn.elbarae.me/loco-screenshot.png "Example of the extension")
+![Example of the extension](https://cdn.elbarae.me/loco-screenshot.png "Example of the extension")
 
 ## Release Notes
 
