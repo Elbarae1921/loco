@@ -22,7 +22,7 @@ export const updateMainBranchCommand = async (
       vscode.window.showInformationMessage(
         `Main branch name updated: '${mainBranchName}'`
       );
-      main(context, git);
+      await main(context, git);
     } else {
       vscode.window.showErrorMessage('Branch not found');
     }

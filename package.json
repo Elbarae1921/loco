@@ -22,6 +22,10 @@
   "contributes": {
     "commands": [
       {
+        "command": "loco.updateDiff",
+        "title": "Loco: Update Diff"
+      },
+      {
         "command": "loco.updateMainBranch",
         "title": "Loco: Update Main Branch Name"
       }
