@@ -19,9 +19,7 @@ const registerCommands = async (
     )
   ];
 
-  for (const disposable of disposables) {
-    context.subscriptions.push(disposable);
-  }
+  context.subscriptions.push(...disposables);
 };
 
 export async function activate(context: vscode.ExtensionContext) {
