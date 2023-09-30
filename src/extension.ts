@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { SimpleGit, simpleGit } from 'simple-git';
+import { updateDiffCommand } from './commands/updateDiff';
 import { updateMainBranchCommand } from './commands/updateMainBranch';
 import { main } from './main';
 
@@ -7,11 +8,18 @@ const registerCommands = async (
   context: vscode.ExtensionContext,
   git: SimpleGit
 ) => {
-  let disposable = vscode.commands.registerCommand(
-    'loco.updateMainBranch',
-    () => updateMainBranchCommand(context, git)
-  );
-  context.subscriptions.push(disposable);
+  const disposables = [
+    vscode.commands.registerCommand(
+      'loco.updateDiff',
+      () => updateDiffCommand(context, git)
+    ),
+    vscode.commands.registerCommand(
+      'loco.updateMainBranch',
+      () => updateMainBranchCommand(context, git)
+    )
+  ];
+
+  context.subscriptions.push(...disposables);
 };
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -22,8 +30,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
       registerCommands(context, git);
 
-      main(context, git);
       vscode.workspace.onDidSaveTextDocument(() => main(context, git));
+      await main(context, git);
     } else {
       throw new Error('Folder path not found');
     }
