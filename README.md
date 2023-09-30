@@ -17,3 +17,7 @@ Initial release of LoCo
 ### 0.0.2
 
 Update extension README
+
+### 0.0.3
+
+Add command to update displayed diff `Loco: Update Diff`
