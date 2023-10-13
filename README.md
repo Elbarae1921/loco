@@ -21,3 +21,7 @@ Update extension README
 ### 0.0.3
 
 Add command to update displayed diff `Loco: Update Diff`
+
+### 0.0.4
+
+Added ability to customize git path through settings and through a command `Loco: Update Git Path`

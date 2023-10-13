@@ -7,7 +7,7 @@
   "repository": {
     "url": "https://github.com/elbarae1921/loco"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "engines": {
     "vscode": "^1.82.0"
@@ -20,6 +20,17 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "LoCo",
+      "properties": {
+        "loco.gitPath": {
+          "type": "string",
+          "default": null,
+          "description": "Specifies the absolute folder path containing the git repository"
+        }
+      }
+    },
     "commands": [
       {
         "command": "loco.updateDiff",
@@ -28,6 +39,10 @@
       {
         "command": "loco.updateMainBranch",
         "title": "Loco: Update Main Branch Name"
+      },
+      {
+        "command": "loco.updateGitPath",
+        "title": "Loco: Update Git Path"
       }
     ]
   },
