@@ -42,7 +42,10 @@ export async function activate(context: vscode.ExtensionContext) {
 
       registerCommands(context, git);
 
-      vscode.workspace.onDidSaveTextDocument(() => main(context, git));
+      const autoDiff = extensionSettings.get<boolean>('autoDiff');
+      if (autoDiff) {
+        vscode.workspace.onDidSaveTextDocument(() => main(context, git));
+      }
       await main(context, git);
     } else {
       throw new Error('Folder path not found');

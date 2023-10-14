@@ -25,3 +25,7 @@ Add command to update displayed diff `Loco: Update Diff`
 ### 0.0.4
 
 Added ability to customize git path through settings and through a command `Loco: Update Git Path`
+
+### 0.1.0
+
+Added ability to disable/enable automatically calculating the diff on file save through extension settings

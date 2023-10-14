@@ -7,7 +7,7 @@
   "repository": {
     "url": "https://github.com/elbarae1921/loco"
   },
-  "version": "0.0.4",
+  "version": "0.1.0",
   "license": "MIT",
   "engines": {
     "vscode": "^1.82.0"
@@ -28,6 +28,11 @@
           "type": "string",
           "default": null,
           "description": "Specifies the absolute folder path containing the git repository"
+        },
+        "loco.autoDiff": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable automatically calculating the diff every time you save a file"
         }
       }
     },
