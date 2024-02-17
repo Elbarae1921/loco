@@ -8,6 +8,14 @@ import {
 
 let cachedBranchSummary: BranchSummary | null = null;
 
+export const getSettings = () => {
+  const extensionSettings = vscode.workspace.getConfiguration('loco');
+  const gitPath = extensionSettings.get<string>('gitPath');
+  const autoDiff = extensionSettings.get<boolean>('autoDiff');
+  const showCurrentFile = extensionSettings.get<boolean>('showCurrentFile');
+  return { gitPath, autoDiff, showCurrentFile };
+};
+
 export const getAllBranches = (git: SimpleGit) =>
   new Promise<BranchSummary>((res, rej) => {
     if (!cachedBranchSummary) {
@@ -64,6 +72,20 @@ export const getDiff = async (
 ): Promise<DiffResult> =>
   new Promise((res, rej) => {
     git.diffSummary([mainRef], (e, d) => {
+      if (e) {
+        return rej(e);
+      }
+      return res(d);
+    });
+  });
+
+export const getDiffForFile = async (
+  git: SimpleGit,
+  mainRef: string,
+  file: string
+): Promise<DiffResult> =>
+  new Promise((res, rej) => {
+    git.diffSummary([mainRef, '--', file], (e, d) => {
       if (e) {
         return rej(e);
       }

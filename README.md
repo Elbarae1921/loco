@@ -29,3 +29,7 @@ Added ability to customize git path through settings and through a command `Loco
 ### 0.1.0
 
 Added ability to disable/enable automatically calculating the diff on file save through extension settings
+
+### 0.2.0
+
+Added ability to disable/enable showing diff of the current file thought extension settings

@@ -4,6 +4,7 @@ import { updateDiffCommand } from './commands/updateDiff';
 import { updateMainBranchCommand } from './commands/updateMainBranch';
 import { main } from './main';
 import { updateGitPath } from './commands/updateGitPath';
+import { getSettings } from './utils';
 
 const registerCommands = async (
   context: vscode.ExtensionContext,
@@ -28,8 +29,8 @@ export async function activate(context: vscode.ExtensionContext) {
   try {
     const workspacePath = vscode.workspace.workspaceFolders?.[0];
     if (workspacePath) {
-      const extensionSettings = vscode.workspace.getConfiguration('loco');
-      let gitPath = extensionSettings.get<string>('gitPath');
+      const { autoDiff, showCurrentFile, ...settings } = getSettings();
+      let gitPath = settings.gitPath;
       if (!gitPath) {
         gitPath = workspacePath.uri.fsPath;
       }
@@ -42,9 +43,11 @@ export async function activate(context: vscode.ExtensionContext) {
 
       registerCommands(context, git);
 
-      const autoDiff = extensionSettings.get<boolean>('autoDiff');
       if (autoDiff) {
         vscode.workspace.onDidSaveTextDocument(() => main(context, git));
+      }
+      if (showCurrentFile) {
+        vscode.window.onDidChangeActiveTextEditor(() => main(context, git));
       }
       await main(context, git);
     } else {
