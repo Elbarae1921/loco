@@ -32,4 +32,8 @@ Added ability to disable/enable automatically calculating the diff on file save 
 
 ### 0.2.0
 
-Added ability to disable/enable showing diff of the current file thought extension settings
+Added ability to disable/enable showing diff of the current file through extension settings
+
+### 0.2.1
+
+Update extension homepage
